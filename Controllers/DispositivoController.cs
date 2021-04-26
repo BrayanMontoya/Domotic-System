@@ -13,7 +13,7 @@ namespace SistemaDomotico.Controllers
     public class DispositivoController : ControllerBase
     {
 
-        // GET api/<DispositivoController>/5
+        // GET api/Dispositivo/id/temperatura/humedad/estadoFoco
         [HttpGet("{id}/{temperatura}/{humedad}/{estadoFoco}")]
         public Models.Dispositivo Get(int id, float temperatura, float humedad, int estadoFoco)
         {

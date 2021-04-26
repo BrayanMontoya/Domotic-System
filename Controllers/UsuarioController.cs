@@ -12,6 +12,8 @@ namespace SistemaDomotico.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
+        //Este método GET lo que hace es consultar en la base de datos que los datos 
+        // de usuario y contraseña coincidad, si lo hacen, regresa TRUE sino FALSE
         // GET api/Usario/usuario/contraseña
         // GET api/Usario/brayan/123
         [HttpGet("{userName}/{password}")]
@@ -31,6 +33,9 @@ namespace SistemaDomotico.Controllers
             }
             
         }
+        //Este método GET lo que hace es que al pasar el login de la aplicación, consulta en la base de datos
+        // con que estado se había quedado tanto el enchufe como el contacto, para que se refleje
+        // a través de las imagenes que representarán al dispositivo si están prendidos o apagados.
         //Enchufe y foco
         // GET api/<DispositivoController>/5
         [HttpGet("{id}")]
@@ -42,6 +47,8 @@ namespace SistemaDomotico.Controllers
             }
         }
 
+        // Este método POST lo que hace es que al momento de seleccionar la luminosidad
+        // del foco, actualiza en la base de datos.
         //Foco
         // POST api/<DispositivoController>/5
         [HttpPost("{id}/{dimmer}")]
@@ -70,6 +77,8 @@ namespace SistemaDomotico.Controllers
             }
         }
 
+        //Este método POST lo que hace es actualizar en la base de datos si es que se prende/apaga el
+        //enchufe
         //Enchufe
         // POST api/<DispositivoController>/5
         [HttpPost("{id}")]
