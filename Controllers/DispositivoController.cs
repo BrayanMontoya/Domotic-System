@@ -14,20 +14,33 @@ namespace SistemaDomotico.Controllers
     {
 
         // GET api/<DispositivoController>/5
-        [HttpGet("{id}")]
-        public Models.Dispositivo Get(int id)
+        [HttpGet("{id}/{temperatura}/{humedad}/{estadoFoco}")]
+        public Models.Dispositivo Get(int id, float temperatura, float humedad, int estadoFoco)
         {
             using (var db = new Models.SistemaDomoticoContext())
             {
-                return db.Dispositivos.FirstOrDefault(x => x.IdDispositivo == id);
+                var dispositivo = db.Dispositivos.FirstOrDefault(x => x.IdDispositivo == id);
+                if(estadoFoco == 1)
+                {
+                    if(dispositivo.EstadoFoco > 0)
+                    {
+                        dispositivo.EstadoFoco = 0;
+                    }
+                    else
+                    {
+                        dispositivo.EstadoFoco = 255;
+                    }
+                }
+                dispositivo.Temperatura = temperatura;
+                dispositivo.Humedad = humedad;
+                db.SaveChanges();
+                return dispositivo;
             }
         }
 
-        // POST api/<DispositivoController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+
+
+      
 
     
     }

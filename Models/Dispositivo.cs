@@ -9,7 +9,7 @@ namespace SistemaDomotico.Models
     {
         public int IdDispositivo { get; set; }
         public int EstadoFoco { get; set; }
-        public bool EstadoEnchufe { get; set; }
+        public int EstadoEnchufe { get; set; }
         public double Temperatura { get; set; }
         public double Humedad { get; set; }
         public int Usuario { get; set; }
